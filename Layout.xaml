@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="T2008M_UWP.Layout"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:T2008M_UWP"
+     xmlns:models="using:T2008M_UWP.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <SplitView x:Name="SP" OpenPaneLength="150" DisplayMode="CompactInline" IsPaneOpen="True">
+        <SplitView.Pane>
+            <RelativePanel>
+                <FontIcon Tapped="FontIcon_Tapped" x:Name="Click" FontFamily="Segoe MDL2 Assets" Glyph="&#xE700;"  Margin="12,20,0,0"/>
+
+                <ListView Loaded="Menu_Loaded" x:Name="Menu" Margin="0,10,0,0" RelativePanel.Below="Click">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="models:MenuItem">
+                            <ListViewItem Tapped="ListViewItem_Tapped">
+                                <TextBlock Text="{x:Bind Name}"/>
+                            </ListViewItem>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </RelativePanel>
+        </SplitView.Pane>
+        <SplitView.Content>
+            <ScrollViewer Margin="10">
+                <Frame x:Name="MainFrame" />
+            </ScrollViewer>
+        </SplitView.Content>
+    </SplitView>
+</Page>
